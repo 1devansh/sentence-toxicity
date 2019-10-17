@@ -34,6 +34,7 @@ const classify = async (inputs) => {
 };
 
 const addPredictions = (predictions) => {
+
     const tableWrapper = document.querySelector('#table-wrapper');
     // var length_pred = predictions.length;
     // console.log(length_pred)
@@ -53,7 +54,7 @@ const addPredictions = (predictions) => {
                         return `<div class="${
                             'label' +
                             (d[label] === true ? ' positive' :
-                                '')}">${d[label]}</div>`
+                                ' not-p')}">${d[label]}</div>`
                     })
                 .join('')}
     </div>`;
@@ -63,6 +64,10 @@ const addPredictions = (predictions) => {
 
 const predict = async () => {
     model = await toxicity.load();
+    // document.getElementById("table-wrapper").style.display = "block";
+    // document.getElementById("inp").style.display = "block";
+    // document.getElementsByClassName("lds-ring").style.display = "none";
+
     labels = model.model.outputNodes.map(d => d.split('/')[0]);
 
     const tableWrapper = document.querySelector('#table-wrapper');

@@ -1,8 +1,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
-    background-color: black;
-    color: white;
+    background-color:#ffffff;
+    color: black;
     line-height: 1.5;
 }
 
@@ -16,11 +16,11 @@ h1 {
 .description {
     margin-bottom: 60px;
     text-align: center;
-    color: #f1f1f1    ;
+    color: #000    ;
 }
 
 #main {
-    width: 1000px;
+    width: max-content;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -32,7 +32,7 @@ h1 {
 }
 
 .row:nth-of-type(2n) {
-    background: whitesmoke;
+    background: #efefef;
 }
 
 .row .text {
@@ -59,15 +59,20 @@ h1 {
 }
 
 .positive {
-    font-weight: bold;
+    /* font-weight: bold; */
     text-transform: capitalize;
     color: red;
+}
+.not-p{
+    /* font-weight: bold; */
+    text-transform: capitalize;
 }
 
 .text,
 .label {
     padding: 10px;
-    text-transform: capitalize;
+    margin: 5px;
+    /* text-transform: capitalize; */
 }
 
 #classify-new-text-input {
@@ -109,10 +114,48 @@ h1 {
 }
 
 #table-wrapper {
+    display:block;
     margin-bottom: 60px;
+    
 }
 
 p {
     font-weight: bold;
     text-align: center;
+}
+
+.lds-ring {
+display: block;
+position: relative;
+width: 64px;
+height: 64px;
+}
+.lds-ring div {
+box-sizing: border-box;
+display: block;
+position: absolute;
+width: 102px;
+height: 102px;
+margin: 12px;
+border: 12px solid #000000;
+border-radius: 50%;
+animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+border-color: #000 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
 }
