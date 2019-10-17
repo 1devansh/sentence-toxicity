@@ -76,6 +76,7 @@ const predict = async () => {
     document.querySelector('#classify-new-text')
         .addEventListener('click', (e) => {
             const text = document.querySelector('#classify-new-text-input').value;
+            document.querySelector('#classify-new-text-input').value = "";
             const predictions = classify([text]).then(d => {
                 addPredictions(d);
 
