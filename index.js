@@ -36,13 +36,6 @@ const classify = async (inputs) => {
 const addPredictions = (predictions) => {
 
     const tableWrapper = document.querySelector('#table-wrapper');
-    // var length_pred = predictions.length;
-    // console.log(length_pred)
-    // if (length_pred >= 5) {
-    //     console.log(predictions)
-    //     predictions = predictions.slice(length_pred - 5, length_pred);
-
-    // }
 
     predictions.forEach(d => {
         const predictionDom = `<div class="row">
@@ -64,9 +57,8 @@ const addPredictions = (predictions) => {
 
 const predict = async () => {
     model = await toxicity.load();
-    // document.getElementById("table-wrapper").style.display = "block";
-    // document.getElementById("inp").style.display = "block";
-    // document.getElementsByClassName("lds-ring").style.display = "none";
+    console.log("done");
+    document.getElementById("loader").style.display = "none";
 
     labels = model.model.outputNodes.map(d => d.split('/')[0]);
 
