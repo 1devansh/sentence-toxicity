@@ -1,10 +1,10 @@
 <html>
 
 <head>
-    <title>TensorFlow.js toxicity classifier demo</title>
+    <title>Sentence toxicity</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', sans-serif;
+            font-family: 'Roboto', sans-serif;
             box-sizing: border-box;
             line-height: 1.5;
         }
@@ -12,6 +12,7 @@
         h1 {
             margin-bottom: 30px;
             font-size: 34px;
+            font-family: 'Roboto Mono', monospace;
         }
 
         .description {
@@ -52,19 +53,21 @@
         .row:first-of-type .label,
         .row:first-of-type .text {
             font-weight: bold;
-            text-transform: lowercase;
+            text-transform: capitalize;
             line-height: 1.4;
             padding-bottom: 20px;
         }
 
         .positive {
             font-weight: bold;
+            text-transform: capitalize;
             color: red;
         }
 
         .text,
         .label {
             padding: 10px;
+            text-transform: capitalize;
         }
 
         #classify-new-text-input {
@@ -107,24 +110,29 @@
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
     <script src="js/tfjs.js"></script>
     <script src="js/toxicity.js"></script>
 
 </head>
+<!-- This is a demo of the TensorFlow.js toxicity model, which classifies text according to
+            whether it exhibits offensive attributes (i.e. profanity, sexual explicitness). The samples in the table
+            below were taken from this -->
 
 <body>
     <div id='main'>
-        <h1>TensorFlow.js toxicity classifier demo</h1>
-        <div class="description">This is a demo of the TensorFlow.js toxicity model, which classifies text according to
-            whether it exhibits offensive attributes (i.e. profanity, sexual explicitness). The samples in the table
-            below were taken from this <a
-                href="https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data">Kaggle dataset</a>.
+        <h1>Sentence toxicity</h1>
+        <div class="description">Check toxicity of any statement on the grounds of it exhibiting offensive attributes
+            (i.e. profanity, sexual explicitness).
+
         </div>
+
         <div id="table-wrapper"></div>
-        <p>Enter text below and click 'Classify' to add it to the table.</p>
+
+        <p>Enter statement below to check for it's toxicity.</p>
         <div>
             <input id="classify-new-text-input" placeholder="i.e. 'you suck'">
-            <div id="classify-new-text">Classify</div>
+            <div id="classify-new-text">Check</div>
         </div>
     </div>
 

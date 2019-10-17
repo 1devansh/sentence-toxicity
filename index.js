@@ -1,23 +1,24 @@
 // import * as toxicity from '@tensorflow-models/toxicity';
 
 // console.log('in here');
-const samples = [
-    {
-        'id': '002261b0415c4f9d',
-        'text':
-            'We\'re dudes on computers, moron.  You are quite astonishingly stupid.'
-    },
-    {
-        'id': '0027160ca62626bc',
-        'text':
-            'Please stop. If you continue to vandalize Wikipedia, as you did to Kmart, you will be blocked from editing.'
-    },
-    {
-        'id': '002fb627b19c4c0b',
-        'text':
-            'I respect your point of view, and when this discussion originated on 8th April I would have tended to agree with you.'
-    }
-];
+const samples = [];
+// const samples = [
+//     {
+//         'id': '002261b0415c4f9d',
+//         'text':
+//             'We\'re dudes on computers, moron.  You are quite astonishingly stupid.'
+//     },
+//     {
+//         'id': '0027160ca62626bc',
+//         'text':
+//             'Please stop. If you continue to vandalize Wikipedia, as you did to Kmart, you will be blocked from editing.'
+//     },
+//     {
+//         'id': '002fb627b19c4c0b',
+//         'text':
+//             'I respect your point of view, and when this discussion originated on 8th April I would have tended to agree with you.'
+//     }
+// ];
 
 let model, labels;
 
@@ -34,6 +35,13 @@ const classify = async (inputs) => {
 
 const addPredictions = (predictions) => {
     const tableWrapper = document.querySelector('#table-wrapper');
+    // var length_pred = predictions.length;
+    // console.log(length_pred)
+    // if (length_pred >= 5) {
+    //     console.log(predictions)
+    //     predictions = predictions.slice(length_pred - 5, length_pred);
+
+    // }
 
     predictions.forEach(d => {
         const predictionDom = `<div class="row">
@@ -60,21 +68,21 @@ const predict = async () => {
     const tableWrapper = document.querySelector('#table-wrapper');
     tableWrapper.insertAdjacentHTML(
         'beforeend', `<div class="row">
-    <div class="text">TEXT</div>
+    <div class="text">Sentence</div>
     ${labels.map(label => {
             return `<div class="label">${label.replace('_', ' ')}</div>`;
         }).join('')}
   </div>`);
-    console.log('yes, its in predictions');
 
     const predictions = await classify(samples.map(d => d.text));
     addPredictions(predictions);
-    console.log(predictions);
     document.querySelector('#classify-new-text')
         .addEventListener('click', (e) => {
             const text = document.querySelector('#classify-new-text-input').value;
             const predictions = classify([text]).then(d => {
                 addPredictions(d);
+
+
             });
         });
 };
